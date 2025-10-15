@@ -14,7 +14,8 @@ public class MessageMapper {
         return new Message(
                 null,
                 dto.message(),
-                LocalDateTime.now()
+                LocalDateTime.now(),
+                dto.pinned()
         );
     }
 
@@ -22,7 +23,8 @@ public class MessageMapper {
         return new MessageResponseDTO(
                 message.id(),
                 message.message(),
-                message.createdAt()
+                message.createdAt(),
+                message.pinned()
         );
     }
 }

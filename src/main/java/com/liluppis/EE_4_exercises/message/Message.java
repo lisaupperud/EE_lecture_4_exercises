@@ -12,6 +12,8 @@ public record Message(
         Long id,
         String message,
         @Column("created_at")
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        @Column("pinned")
+        boolean pinned
 ) {
 }

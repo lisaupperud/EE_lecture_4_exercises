@@ -11,6 +11,7 @@ import java.time.LocalDateTime;
 public record MessageResponseDTO(
         Long id,
         String message,
-        LocalDateTime createdAt
+        LocalDateTime createdAt,
+        boolean pinned
 ) {
 }

@@ -33,7 +33,8 @@ public class GlobalExceptionHandler {
 
         log.warn("Validation failed {} -> errors {}",
                 errorDetailList.size(),
-                errorDetailList.stream().map(ValidationError::field)
+                errorDetailList.stream()
+                        .map(error -> error.field() + ": " + error.message())
                         .toList());
 
         return ResponseEntity.badRequest().body(new ApiErrorResponse(

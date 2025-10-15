@@ -14,6 +14,7 @@ import java.time.LocalDateTime;
 public record MessageCreationDTO(
         @Size(min = 3, max = 255, message = "Check the message length!")
         @NotBlank(message = "Message can't be blank or contain whitespaces")
-        String message
+        String message,
+        boolean pinned
 ) {
 }
