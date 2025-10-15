@@ -1,4 +1,4 @@
-package com.liluppis.EE_4_exercises.message.advice.dto;
+package com.liluppis.EE_4_exercises.message.handler.dto;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
-package com.liluppis.EE_4_exercises.message.advice;
+package com.liluppis.EE_4_exercises.message.handler;
 
-import com.liluppis.EE_4_exercises.message.advice.dto.ApiErrorResponse;
-import com.liluppis.EE_4_exercises.message.advice.dto.ValidationError;
+import com.liluppis.EE_4_exercises.message.handler.dto.ApiErrorResponse;
+import com.liluppis.EE_4_exercises.message.handler.dto.ValidationError;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -13,9 +13,9 @@ import org.springframework.web.bind.support.WebExchangeBindException;
 import java.util.List;
 
 @RestControllerAdvice
-public class ValidationAdvice {
+public class GlobalExceptionHandler {
 
-    private static final Logger log = LoggerFactory.getLogger(ValidationAdvice.class);
+    private static final Logger log = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     @ExceptionHandler(WebExchangeBindException.class)
     public ResponseEntity<ApiErrorResponse> handleValidationErrors(WebExchangeBindException ex) {
