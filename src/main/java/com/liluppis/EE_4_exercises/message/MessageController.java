@@ -34,7 +34,7 @@ public class MessageController {
         return messageService.createMessage(messageCreationDTO)
                 .map(savedMessage -> ResponseEntity
                         .status(HttpStatus.CREATED)
-                        .body(messageMapper.toMessageResponseDTO(savedMessage));
+                        .body(messageMapper.toMessageResponseDTO(savedMessage)));
 
     }
 }
