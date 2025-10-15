@@ -1,5 +1,6 @@
 package com.liluppis.EE_4_exercises.message.handler;
 
+import com.liluppis.EE_4_exercises.message.MessageNotFoundException;
 import com.liluppis.EE_4_exercises.message.handler.dto.ApiErrorResponse;
 import com.liluppis.EE_4_exercises.message.handler.dto.ValidationError;
 import org.slf4j.Logger;
@@ -41,5 +42,18 @@ public class GlobalExceptionHandler {
                         errorDetailList
                 )
         );
+    }
+
+    @ExceptionHandler(MessageNotFoundException.class)
+    public ResponseEntity<ApiErrorResponse> handleMessageNotFound(MessageNotFoundException ex){
+        ApiErrorResponse apiErrorResponse = new ApiErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                ex.getMessage(),
+                List.of()
+        );
+
+        return ResponseEntity
+                .status(HttpStatus.NOT_FOUND)
+                .body(apiErrorResponse);
     }
 }
