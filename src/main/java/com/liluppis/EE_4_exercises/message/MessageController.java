@@ -8,10 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 @RestController
@@ -27,8 +24,15 @@ public class MessageController {
         this.messageMapper = messageMapper;
     }
 
-    // TODO - add @GettMapping for findById()
-    // TODO - test GET call
+    @GetMapping("/{id}")
+    public Mono<ResponseEntity<MessageResponseDTO>> findById(@PathVariable Long id) {
+        return messageService.findById(id)
+                .map(foundMessage -> ResponseEntity
+                        .status(HttpStatus.OK)
+                        .body(messageMapper.toMessageResponseDTO(foundMessage))
+                );
+    }
+
     // TODO - continue from ex.6
 
     @PostMapping("/create")

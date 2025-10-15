@@ -46,6 +46,9 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MessageNotFoundException.class)
     public ResponseEntity<ApiErrorResponse> handleMessageNotFound(MessageNotFoundException ex){
+
+        log.warn(ex.getMessage());
+
         ApiErrorResponse apiErrorResponse = new ApiErrorResponse(
                 HttpStatus.NOT_FOUND.value(),
                 ex.getMessage(),

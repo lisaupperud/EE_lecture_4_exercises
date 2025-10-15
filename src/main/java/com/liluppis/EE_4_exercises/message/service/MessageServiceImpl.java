@@ -1,6 +1,7 @@
 package com.liluppis.EE_4_exercises.message.service;
 
 import com.liluppis.EE_4_exercises.message.Message;
+import com.liluppis.EE_4_exercises.message.MessageNotFoundException;
 import com.liluppis.EE_4_exercises.message.MessageRepository;
 import com.liluppis.EE_4_exercises.message.dto.MessageCreationDTO;
 import com.liluppis.EE_4_exercises.message.objectMapper.MessageMapper;
@@ -27,9 +28,9 @@ public class MessageServiceImpl implements IMessageService{
     @Override
     public Mono<Message> findById(Long id) {
 
-        log.info("Found Message with id: {}", id);
-
-        return messageRepository.findById(id);
+        return messageRepository.findById(id)
+                .doOnNext(message -> log.info("Message found: {}", message))
+                .switchIfEmpty(Mono.error(new MessageNotFoundException(id)));
     }
 
     @Override
