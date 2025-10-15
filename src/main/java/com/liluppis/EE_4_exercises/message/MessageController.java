@@ -27,6 +27,10 @@ public class MessageController {
         this.messageMapper = messageMapper;
     }
 
+    // TODO - add @GettMapping for findById()
+    // TODO - test GET call
+    // TODO - continue from ex.6
+
     @PostMapping("/create")
     public Mono<ResponseEntity<MessageResponseDTO>> createNewMessage(
             @Valid @RequestBody MessageCreationDTO messageCreationDTO
