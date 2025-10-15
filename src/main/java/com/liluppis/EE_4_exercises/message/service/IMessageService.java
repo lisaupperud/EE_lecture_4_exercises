@@ -6,5 +6,7 @@ import reactor.core.publisher.Mono;
 
 public interface IMessageService {
 
+    Mono<Message> findById(Long id);
     Mono<Message> createMessage(MessageCreationDTO messageCreationDTO);
+
 }
