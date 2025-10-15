@@ -25,6 +25,14 @@ public class MessageServiceImpl implements IMessageService{
     }
 
     @Override
+    public Mono<Message> findById(Long id) {
+
+        log.info("Found Message with id: {}", id);
+
+        return messageRepository.findById(id);
+    }
+
+    @Override
     public Mono<Message> createMessage(MessageCreationDTO messageCreationDTO) {
 
         log.info("New Message has been created & saved");
