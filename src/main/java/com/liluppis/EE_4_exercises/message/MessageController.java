@@ -24,6 +24,16 @@ public class MessageController {
         this.messageMapper = messageMapper;
     }
 
+    /* <ResponseEntity<MessageResponseDTO>> vs <ResponseEntity<Message>>
+    *
+    *   NEVER return the actual Entity object in ResponseEntity
+    *   This can create som serious security issues, since you're returning the entire object,
+    *   containing sensitive information like 'password' or Personally Identifiable Information.
+    *
+    *   ALWAYS use a DTO class to map the Entity Object, so that you can hide sensitive information
+    *   that a user does not need to see.
+    * */
+
     @GetMapping("/{id}")
     public Mono<ResponseEntity<MessageResponseDTO>> findById(@PathVariable Long id) {
         return messageService.findById(id)
@@ -32,8 +42,6 @@ public class MessageController {
                         .body(messageMapper.toMessageResponseDTO(foundMessage))
                 );
     }
-
-    // TODO - continue from ex.6
 
     @PostMapping("/create")
     public Mono<ResponseEntity<MessageResponseDTO>> createNewMessage(
