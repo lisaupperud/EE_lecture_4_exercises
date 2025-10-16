@@ -53,4 +53,9 @@ public class MessageController {
                         .body(messageMapper.toMessageResponseDTO(savedMessage)));
 
     }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable Long id){
+
+    }
 }
