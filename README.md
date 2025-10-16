@@ -58,9 +58,8 @@ This API allows users to:
   GET `/api/v1/message/{id}`
 
 ## Further Development
-
-- Add DeleteMapping Endpoint
-
+- TBD
+---
 
 ## Screenshots: Postman, Logs & PostgreSQL Database Table
 
