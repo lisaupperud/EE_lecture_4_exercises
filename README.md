@@ -55,4 +55,5 @@ This API allows users to:
 - Retrieve messages by ID
 - Validate input with `@Valid` and handle errors using a global exception handler
 
-For detailed API documentation, see the [Wiki → Message API]([../../wiki/Message-API](https://github.com/lisaupperud/EE_lecture_4_exercises/wiki/Mesage-API))
+For detailed API documentation, see the Wiki:
+https://github.com/lisaupperud/EE_lecture_4_exercises/wiki/Mesage-API
