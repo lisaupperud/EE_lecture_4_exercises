@@ -42,4 +42,11 @@ public class MessageServiceImpl implements IMessageService{
                 messageMapper.toMessage(messageCreationDTO)
         );
     }
+
+    @Override
+    public Mono<Void> deleteMessageById(Long id){
+        return  messageRepository.deleteById(id)
+                .doOnNext(message -> log.info("Message deleted: {}", message))
+                .switchIfEmpty(Mono.error(new MessageNotFoundException(id)));
+    }
 }
