@@ -4,7 +4,7 @@ Reactive Spring Boot API for creating and retrieving messages.
 Built as part of the Java Enterprise & Eclipse course to explore reactive programming concepts with WebFlux and Project Reactor.
 
 For detailed API documentation, see the Wiki:
-https://github.com/lisaupperud/EE_lecture_4_exercises/wiki/Mesage-API
+https://github.com/lisaupperud/EE_lecture_4_exercises/wiki/Message-API
 
 ##  Project Overview
 This API allows users to:
@@ -94,6 +94,24 @@ This API allows users to:
 #### Log
 
 2025-10-15T21:00:41.961+02:00  WARN 45840 --- \[EE\_4\_exercises] \[ctor-http-nio-3] c.l.E.m.handler.GlobalExceptionHandler   : Validation failed 2 -> errors \[message: Message can't be blank or contain whitespaces, message: Check the message length!]
+
+#### DELETE `204 NO CONTENT`
+
+<img width="1442" height="952" alt="delete_204" src="https://github.com/user-attachments/assets/85928c2e-ef41-4323-8e25-33a7058ec501" />
+
+#### Log
+
+2025-10-16T10:03:56.682+02:00  INFO 24364 --- [EE_4_exercises] [reactor-tcp-nio-1] c.l.E.m.service.MessageServiceImpl       : Message deleted: Message[id=4, message=This is an unpinned message, createdAt=2025-10-15T20:56:18.794143, pinned=false]
+
+#### DELETE `404 NOT FOUND`
+
+<img width="1446" height="948" alt="delete_404" src="https://github.com/user-attachments/assets/b0222d35-7bb3-4d1f-a9db-d6137cb70de0" />
+
+#### Log
+
+2025-10-16T10:25:48.859+02:00  WARN 23536 --- [EE_4_exercises] [actor-tcp-nio-1] c.l.E.m.handler.GlobalExceptionHandler   : Message with Id 6 not found
+
+---
 
 ### PostGreSQL - Message:
 
