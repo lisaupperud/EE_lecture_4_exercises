@@ -54,8 +54,14 @@ public class MessageController {
 
     }
 
-    @DeleteMapping("/{id}")
-    public void deleteById(@PathVariable Long id){
+    /*
+     * .map() → transformerar innehållet i flödet (t.ex. ett Message → ResponseEntity<Message>).
+     * .then() → ignorerar resultatet och returnerar ett nytt Mono, ofta för att indikera “jag bryr mig bara om att operationen är klar”.
+     * */
 
+    @DeleteMapping("/delete")
+    public Mono<ResponseEntity<Void>> deleteMessageById(@RequestParam Long id){
+        return messageService.deleteMessageById(id)
+                .then(Mono.just(ResponseEntity.noContent().build()));
     }
 }

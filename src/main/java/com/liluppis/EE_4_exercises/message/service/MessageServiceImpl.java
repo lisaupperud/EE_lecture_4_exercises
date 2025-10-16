@@ -44,9 +44,12 @@ public class MessageServiceImpl implements IMessageService{
     }
 
     @Override
-    public Mono<Void> deleteMessageById(Long id){
-        return  messageRepository.deleteById(id)
-                .doOnNext(message -> log.info("Message deleted: {}", message))
-                .switchIfEmpty(Mono.error(new MessageNotFoundException(id)));
+    public Mono<Void> deleteMessageById(Long id) {
+        return messageRepository.findById(id) // check that message exists
+                .switchIfEmpty(Mono.error(new MessageNotFoundException(id))) // if so, throw exception
+                .flatMap(message -> messageRepository.deleteById(id)  // then delete
+                        .doOnSuccess(unused -> log.info("Message deleted: {}", message))
+                );
+
     }
 }
